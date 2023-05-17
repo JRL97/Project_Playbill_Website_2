@@ -31,14 +31,9 @@
  header("Location: students.php");
 } 
 
-    
-      
-    
-   } else {
+   } 
+   else {
       header("Location: index.php");
    }
-
-
-
 
    ?>
