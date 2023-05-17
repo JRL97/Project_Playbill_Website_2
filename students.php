@@ -16,8 +16,9 @@
 
       $result = mysqli_query($conn,$sql);
 
+      
       //Create Form
-      $data['content'] .= "<form action ='deletestudents.php' method='POST'>";
+      $data['content'] .= "<form action ='deletestudents.php' method='POST' id='popup'>";
       // prepare page content
       $data['content'] .= "<table border='1'>";
       $data['content'] .= "<tr><th colspan='9' align='center'>All Student Records</th></tr>";
@@ -80,3 +81,11 @@
 
 
    ?>
+
+<script type="text/javascript">
+var el = document.getElementById('popup');
+
+el.addEventListener('submit', function(){
+return confirm('Are you sure you want to submit this form?');
+}, false);
+</script>
