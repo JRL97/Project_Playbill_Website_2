@@ -14,11 +14,22 @@ if (isset($_SESSION['id'])) {
    // if the form has been submitted
    if (isset($_POST['submit'])) {
 
-     // CAN DO IF FIELDS ARE EMPTY DISPALY ERROR MESSAGE
-    
+    //Check if any of the fields are empty
+    if(empty($_POST['studentid']) || empty($_POST['password']) 
+        || empty($_POST['dob']) || empty($_POST['firstname']) 
+        || empty($_POST['lastname']) || empty($_POST['house']) 
+        || empty($_POST['town']) || empty($_POST['county']) 
+        || empty($_POST['country']) || empty($_POST['postcode'])) {
+
+            //Print out error message if any of the fields are empty and return to the addstudent page button
+            $data['content'] = "<p>Please Fill In All Required Fields</p><br>";    
+            $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addstudent.php\"'>";
+        } else {
+
+     //Hash Password
      $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    
+    //Insert sql query
     $sql = "INSERT INTO student (studentid, password, dob, firstname, 
     lastname, house, town, county, country, postcode) 
     VALUES ('{$_POST['studentid']}', '$hashed_password', 
@@ -29,13 +40,13 @@ if (isset($_SESSION['id'])) {
 
               // echo $sql;
 
-     
+     //run the query
     $result = mysqli_query($conn,$sql);
 
       $data['content'] = "<p>Student Record Added</p>";
     
       header("Location: students.php");
-
+        }
    }
    else {
   
