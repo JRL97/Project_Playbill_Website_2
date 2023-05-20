@@ -66,26 +66,13 @@
 
    echo template("templates/partials/footer.php");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   ?>
+?>
 
 <script type="text/javascript">
 var el = document.getElementById('popup');
 
-el.addEventListener('submit', function(){
+el.addEventListener('submit', function()
+{
 return confirm('Are you sure you want to submit this form?');
 }, false);
 </script>
