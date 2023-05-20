@@ -36,9 +36,9 @@ if (isset($_SESSION['id'])) {
                 '{$_POST['dob']}', '{$_POST['firstname']}', 
                 '{$_POST['lastname']}', '{$_POST['house']}', 
                 '{$_POST['town']}', '{$_POST['county']}', 
-                '{$_POST['country']}','{$_POST['postcode']}')";
+                '{$_POST['country']}','{$_POST['postcode']},'{$_POST['profileimage']}')";
 
-              // echo $sql;
+              //echo $sql;
 
      //run the query
     $result = mysqli_query($conn,$sql);
@@ -78,6 +78,8 @@ if (isset($_SESSION['id'])) {
    <input name="country" type="text"  value="" /><br/>
    Postcode :
    <input name="postcode" type="text"  value="" /><br/>
+   Profile Picture :
+   <input name="profileimage" type="file" Value="" /><br><br>
    <input type="submit" value="Save" name="submit"/>
    </form>
 

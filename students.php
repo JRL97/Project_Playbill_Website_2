@@ -32,6 +32,7 @@
                                 <th>County</th>
                                 <th>Country</th>
                                 <th>Postcode</th>
+                                <th>Profile Image</th>
                             </tr>";
 
       // Display the students within the html table
@@ -46,6 +47,8 @@
          $data['content'] .= "<td> {$row["county"]} </td>";
          $data['content'] .= "<td> {$row["country"]} </td>";
          $data['content'] .= "<td> {$row["postcode"]} </td>";
+         $data['content'] .= "<td> {$row["profileimage"]} </td>";
+
          $data['content'] .= "<td> <input type='checkbox' name='students[]' value='$row[studentid]' ></td>";
          $data['content'] .= "<tr>";
       }
