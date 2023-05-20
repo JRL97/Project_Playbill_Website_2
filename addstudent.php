@@ -31,7 +31,7 @@ if (isset($_SESSION['id'])) {
 
     //Insert sql query
     $sql = "INSERT INTO student (studentid, password, dob, firstname, 
-    lastname, house, town, county, country, postcode) 
+    lastname, house, town, county, country, postcode, profileimage) 
     VALUES ('{$_POST['studentid']}', '$hashed_password', 
                 '{$_POST['dob']}', '{$_POST['firstname']}', 
                 '{$_POST['lastname']}', '{$_POST['house']}', 
