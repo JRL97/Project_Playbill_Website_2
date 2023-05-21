@@ -3,7 +3,7 @@
  include("_includes/dbconnect.inc");
  include("_includes/functions.inc");
 
-  header("Content-type: image/jpg");
+  header("Content-type: image/jpeg");
 
   $sql = "SELECT profileimage FROM student WHERE id='" . $_GET['studentid'] ."';";
  

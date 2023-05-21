@@ -47,7 +47,11 @@
          $data['content'] .= "<td> {$row["county"]} </td>";
          $data['content'] .= "<td> {$row["country"]} </td>";
          $data['content'] .= "<td> {$row["postcode"]} </td>";
-         $data['content'] .= "<td> {$row["profileimage"]} </td>";
+            if (!empty($row["profileimage"])) {
+                $data['content'] .= "<td class='text-center'> <img src='data:image/jpeg;base64," . base64_encode($row['profileimage']) . "' height='100' width='80' /> </td>";
+            } else {
+                $data['content'] .= "<td> No Image Available </td>";
+            }
 
          $data['content'] .= "<td> <input type='checkbox' name='students[]' value='$row[studentid]' ></td>";
          $data['content'] .= "<tr>";
