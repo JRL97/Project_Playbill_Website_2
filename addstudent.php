@@ -4,6 +4,7 @@ include("_includes/config.inc");
 include("_includes/dbconnect.inc");
 include("_includes/functions.inc");
 
+$data['content'] = "";
 
 // check logged in
 if (isset($_SESSION['id'])) {
@@ -29,6 +30,12 @@ if (isset($_SESSION['id'])) {
      //Hash Password
      $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+     $image = $_FILES['profileimage']['tmp_name'];
+     //echo $image;
+     $imagedata = addslashes(fread(fopen($image, "r"), filesize($image)));
+     //echo $imagedata;
+     $studentid = $_POST['studentid'];
+
     //Insert sql query
     $sql = "INSERT INTO student (studentid, password, dob, firstname, 
     lastname, house, town, county, country, postcode, profileimage) 
@@ -36,7 +43,8 @@ if (isset($_SESSION['id'])) {
                 '{$_POST['dob']}', '{$_POST['firstname']}', 
                 '{$_POST['lastname']}', '{$_POST['house']}', 
                 '{$_POST['town']}', '{$_POST['county']}', 
-                '{$_POST['country']}','{$_POST['postcode']},'{$_POST['profileimage']}')";
+                '{$_POST['country']}','{$_POST['postcode']}','$imagedata')";
+
 
               //echo $sql;
 
@@ -45,7 +53,7 @@ if (isset($_SESSION['id'])) {
 
       $data['content'] = "<p>Student Record Added</p>";
     
-      header("Location: students.php");
+      //header("Location: students.php");
         }
    }
    else {
@@ -56,7 +64,7 @@ if (isset($_SESSION['id'])) {
       $data['content'] = <<<EOD
 
    <h2>Add New Student</h2>
-   <form name="frmdetails" action="" method="post">
+   <form name="frmdetails" action="" method="post" enctype="multipart/form-data">
 
    Student ID: 
    <input name="studentid" type="text" value=""  /><br/>
@@ -79,7 +87,7 @@ if (isset($_SESSION['id'])) {
    Postcode :
    <input name="postcode" type="text"  value="" /><br/>
    Profile Picture :
-   <input name="profileimage" type="file" Value="" /><br><br>
+   <input name="profileimage" type="file" value="" /><br><br>
    <input type="submit" value="Save" name="submit"/>
    </form>
 

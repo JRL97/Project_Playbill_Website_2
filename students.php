@@ -21,7 +21,7 @@
       $data['content'] .= "<form action ='deletestudents.php' method='POST' id='popup'>";
       // prepare page content
       $data['content'] .= "<table border='1'>";
-      $data['content'] .= "<tr><th colspan='9' align='center'>All Student Records</th></tr>";
+      $data['content'] .= "<tr><th colspan='10' align='center'>All Student Records</th></tr>";
       $data['content'] .=  "<tr>
                                 <th>Student ID</th>
                                 <th>First Name</th>

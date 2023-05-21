@@ -10,7 +10,7 @@ include("_includes/functions.inc");
   
   
 
-  $sql = "SELECT studentid, firstname, lastname from student;";
+  $sql = "SELECT studentid, firstname, lastname FROM student;";
 
   $result = mysqli_query($conn, $sql);
   
