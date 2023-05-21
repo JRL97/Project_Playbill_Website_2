@@ -25,15 +25,27 @@ if (isset($_SESSION['id'])) {
             //Print out error message if any of the fields are empty and return to the addstudent page button
             $data['content'] = "<p>Please Fill In All Required Fields</p><br>";    
             $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addstudent.php\"'>";
-        } else {
+        } 
+        $allowed_image_extension = array(
+            "png",
+            "jpg",
+            "jpeg"
+        );
+    
+        $file_extension = pathinfo($_FILES["profileimage"]["name"], PATHINFO_EXTENSION);
+// Validate file input to check if is with valid extension
+    if (! in_array($file_extension, $allowed_image_extension)) {
+    echo "Only JPG and PNG are valid!";
+    $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addstudent.php\"'>";
+} 
+        else
+        {
 
      //Hash Password
      $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
      $image = $_FILES['profileimage']['tmp_name'];
-     //echo $image;
      $imagedata = addslashes(fread(fopen($image, "r"), filesize($image)));
-     //echo $imagedata;
      $studentid = $_POST['studentid'];
 
     //Insert sql query
@@ -45,16 +57,12 @@ if (isset($_SESSION['id'])) {
                 '{$_POST['town']}', '{$_POST['county']}', 
                 '{$_POST['country']}','{$_POST['postcode']}','$imagedata')";
 
-
-              //echo $sql;
-
      //run the query
     $result = mysqli_query($conn,$sql);
 
       $data['content'] = "<p>Student Record Added</p>";
     
-      //header("Location: students.php");
-        }
+       }
    }
    else {
   
