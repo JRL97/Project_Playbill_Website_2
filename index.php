@@ -13,7 +13,9 @@
    }
 
    if (isset($_SESSION['id'])) {
-      $data['content'] = "<p>Welcome to your dashboard.";
+      $data['content'] .= "<img src='images/Buckslogo.jpg' class='position-absolute top-50 start-50 translate-middle opacity-25' >";
+      $data['content'] .= "<h1 class='text-center mt-5'>Welcome to your dashboard.<br>";
+      
       echo template("templates/partials/nav.php");
       echo template("templates/default.php", $data);
    } else {
