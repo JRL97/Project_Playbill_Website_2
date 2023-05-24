@@ -35,7 +35,8 @@ if (isset($_SESSION['id'])) {
         $file_extension = pathinfo($_FILES["profileimage"]["name"], PATHINFO_EXTENSION);
 // Validate file input to check if is with valid extension
     if (! in_array($file_extension, $allowed_image_extension)) {
-    echo "Only JPG and PNG are valid!";
+        echo "All Fields Are Required <br> ";
+    echo "Only JPG and PNG are valid! <br> ";
     $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addstudent.php\"'>";
 } 
         else
@@ -48,14 +49,21 @@ if (isset($_SESSION['id'])) {
      $imagedata = addslashes(fread(fopen($image, "r"), filesize($image)));
      $studentid = $_POST['studentid'];
 
+     $firstname =  mysqli_real_escape_string($conn, $_POST['firstname']);
+     $lastname =  mysqli_real_escape_string($conn, $_POST['lastname']);
+     $house = mysqli_real_escape_string($conn, $_POST['house']);
+     $town = mysqli_real_escape_string($conn, $_POST['town']);
+     $county = mysqli_real_escape_string($conn, $_POST['county']);
+     $country = mysqli_real_escape_string($conn, $_POST['country']); 
+     $postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
+
     //Insert sql query
     $sql = "INSERT INTO student (studentid, password, dob, firstname, 
     lastname, house, town, county, country, postcode, profileimage) 
     VALUES ('{$_POST['studentid']}', '$hashed_password', 
-                '{$_POST['dob']}', '{$_POST['firstname']}', 
-                '{$_POST['lastname']}', '{$_POST['house']}', 
-                '{$_POST['town']}', '{$_POST['county']}', 
-                '{$_POST['country']}','{$_POST['postcode']}','$imagedata')";
+                '{$_POST['dob']}', '$firstname', 
+                '$lastname', '$house', '$town', '$county', 
+                '$country','$postcode','$imagedata')";
 
      //run the query
     $result = mysqli_query($conn,$sql);
