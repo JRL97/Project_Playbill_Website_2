@@ -68,7 +68,7 @@ if (isset($_SESSION['id'])) {
      //run the query
     $result = mysqli_query($conn,$sql);
 
-      $data['content'] = "<p>Student Record Added</p>";
+      $data['content'] = "<div class='alert alert-success mt-3' role='alert'>Student Record Added</div>";
     
        }
    }
@@ -79,34 +79,43 @@ if (isset($_SESSION['id'])) {
       // also http://stackoverflow.com/questions/8280360/formatting-an-array-value-inside-a-heredoc
       $data['content'] = <<<EOD
 
+   <div class="container mt-3">
+   <div class="card">
+   <div class="card-header">
    <h2>Add New Student</h2>
+   </div>
+   <div class="card-body">
    <form name="frmdetails" action="" method="post" enctype="multipart/form-data">
 
    Student ID: 
-   <input name="studentid" type="text" value=""  /><br/>
+   <input class="form-control mt-2 mb-2" name="studentid" type="text" value=""  />
    Password:
-   <input name="password" type="password" value=""  /><br/>
+   <input class="form-control mt-2 mb-2" name="password" type="password" value=""  />
    Date of Birth: 
-   <input name="dob" type="date" value="" /><br/>
+   <input class="form-control mt-2 mb-2" name="dob" type="date" value="" />
    First Name :
-   <input name="firstname" type="text" value="" /><br/>
+   <input class="form-control mt-2 mb-2" name="firstname" type="text" value="" />
    Surname :
-   <input name="lastname" type="text"  value="" /><br/>
+   <input class="form-control mt-2 mb-2" name="lastname" type="text"  value="" />
    Number and Street :
-   <input name="house" type="text"  value="" /><br/>
+   <input class="form-control mt-2 mb-2" name="house" type="text"  value="" />
    Town :
-   <input name="town" type="text"  value="" /><br/>
+   <input class="form-control mt-2 mb-2" name="town" type="text"  value="" />
    County :
-   <input name="county" type="text"  value="" /><br/>
+   <input class="form-control mt-2 mb-2" name="county" type="text"  value="" />
    Country :
-   <input name="country" type="text"  value="" /><br/>
+   <input class="form-control mt-2 mb-2" name="country" type="text"  value="" />
    Postcode :
-   <input name="postcode" type="text"  value="" /><br/>
+   <input class="form-control mt-2 mb-2" name="postcode" type="text"  value="" />
    Profile Picture :
-   <input name="profileimage" type="file" value="" /><br><br>
+   <input class="form-control mt-2 mb-2" name="profileimage" type="file" value="" />
+   </div>
+   <div class="card-footer">
    <input type="submit" value="Save" name="submit"/>
+   </div>
    </form>
-
+   </div>
+   </div>
 EOD;
 
    }

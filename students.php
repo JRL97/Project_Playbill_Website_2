@@ -20,7 +20,7 @@
       //Create Form
       $data['content'] .= "<form action ='deletestudents.php' method='POST' id='popup'>";
       // prepare page content
-      $data['content'] .= "<table border='1'>";
+      $data['content'] .= "<table class='table table-bordered border-dark mt-3'>";
       $data['content'] .= "<tr><th colspan='10' align='center'>All Student Records</th></tr>";
       $data['content'] .=  "<tr>
                                 <th>Student ID</th>
@@ -48,7 +48,7 @@
          $data['content'] .= "<td> {$row["country"]} </td>";
          $data['content'] .= "<td> {$row["postcode"]} </td>";
             if (!empty($row["profileimage"])) {
-                $data['content'] .= "<td class='text-center'> <img src='data:image/jpeg;base64," . base64_encode($row['profileimage']) . "' height='100' width='80' /> </td>";
+                $data['content'] .= "<td class='text-center'> <img src='data:image/jpeg;base64," . base64_encode($row['profileimage']) . "' height='100' width='100' /> </td>";
             } else {
                 $data['content'] .= "<td> No Image Available </td>";
             }
