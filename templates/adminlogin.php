@@ -1,9 +1,7 @@
 <div class="bg-image"
      style="background-image: url('images/BucksLogo.jpg'); background-repeat:no-repeat; height: 100vh;">
-
-     <input type="button" value="Admin?" onclick="location='adminlogin.php'" />
      
-<h1 class="mt-4"> User Login </h1>
+<h1 class="mt-4">Login </h1>
 
 <?php 
 if (!empty($message)) {
