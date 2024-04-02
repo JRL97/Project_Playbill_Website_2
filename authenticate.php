@@ -12,7 +12,7 @@
    if (!isset($_POST['txtid']) || !isset($_POST['txtpwd']) || isset($_SESSION['id'])) {
       header("Location: index.php");
 	} else {
-      if (validatelogin($_POST['txtid'],$_POST['txtpwd']) == true) {
+      if (validateuserlogin($_POST['txtid'],$_POST['txtpwd']) == true) {
          // valid
          header("Location: index.php?return=success");
       } else {

@@ -3,25 +3,53 @@
 include "passwordLib.php";
 
 /**
- * Validate Login function
+ * Validate Admin Login function
  *
- * @param $id        - user ID
- * @param $password  - plaintext password
+ * @param $ausername        - admin user name 
+ * @param $apassword  - admin plaintext password
  * @return boolean   - returns true or false depending on successful authentication of user.
  */
-function validatelogin($id,$password) {
+function validateadminlogin($ausername,$apassword) {
    global $conn;
-   // Build an SQL statment that will return a record with a matching id
-   $sql = "select * from student where studentid='$id';";
+   // Build an SQL statment that will return a record with a matching username
+   $sql = "select * from admin where username='$ausername';";
 	//echo $sql;
    $loginresult = mysqli_query($conn, $sql);
-   $studentdetails = mysqli_fetch_assoc($loginresult);
-	//print_r($studentdetails);
+   $admindetails = mysqli_fetch_assoc($loginresult);
+	//print_r($admindetails);
 
 	// use PHP's verify_password function to check whether the stored
 	// hash matches the given password
-	if (password_verify($password, $studentdetails['password'])) {
-		$_SESSION['id'] = $id;
+	if (password_verify($password, $admindetails['password'])) {
+		$_SESSION['id'] = $ausername;
+		return true;
+	}
+	else {
+		$_SESSION['id'] = '';
+		return false;
+	}
+}
+
+/**
+ * Validate User Login function
+ *
+ * @param $uusername        - users username
+ * @param $upassword  - user plaintext password
+ * @return boolean   - returns true or false depending on successful authentication of user.
+ */
+function validateuserlogin($uusername,$upassword) {
+   global $conn;
+   // Build an SQL statment that will return a record with a matching id
+   $sql = "select * from users where username='$uusername';";
+	//echo $sql;
+   $loginresult = mysqli_query($conn, $sql);
+   $userdetails = mysqli_fetch_assoc($loginresult);
+	//print_r($userdetails);
+
+	// use PHP's verify_password function to check whether the stored
+	// hash matches the given password
+	if (password_verify($password, $userdetails['password'])) {
+		$_SESSION['id'] = $uusername;
 		return true;
 	}
 	else {

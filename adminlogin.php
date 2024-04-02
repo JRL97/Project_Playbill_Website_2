@@ -1,7 +1,7 @@
 <div class="bg-image"
      style="background-image: url('images/BucksLogo.jpg'); background-repeat:no-repeat; height: 100vh;">
      
-<h1 class="mt-4"> Admin Login </h1>
+<h1 class="mt-4">Login </h1>
 
 <?php 
 if (!empty($message)) {
@@ -9,7 +9,7 @@ if (!empty($message)) {
 }
 ?>
 
-<form name="frmLogin" action="authenticate.php" method="post">
+<form name="frmLogin" action="adminauthenticate.php" method="post">
   <div class="mt-3">
     <label for="txtid" class="form-label">Username</label>
     <input type="text" class="form-control" id="txtid" name="txtid">
