@@ -11,7 +11,7 @@ if (!empty($message)) {
 }
 ?>
 
-<form name="frmLogin" action="authenticate.php" method="post">
+<form name="frmuLogin" action="authenticate.php" method="post">
   <div class="mt-3">
     <label for="txtid" class="form-label">Username</label>
     <input type="text" class="form-control" id="txtid" name="txtid">

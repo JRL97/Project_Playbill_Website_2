@@ -9,7 +9,7 @@ if (!empty($message)) {
 }
 ?>
 
-<form name="frmLogin" action="adminauthenticate.php" method="post">
+<form name="frmaLogin" action="adminauthenticate.php" method="post">
   <div class="mt-3">
     <label for="txtid" class="form-label">Username</label>
     <input type="text" class="form-control" id="txtid" name="txtid">

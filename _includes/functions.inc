@@ -7,20 +7,20 @@ include "passwordLib.php";
  *
  * @param $ausername        - admin user name 
  * @param $apassword  - admin plaintext password
- * @return boolean   - returns true or false depending on successful authentication of user.
+ * @return boolean   - returns true or false depending on successful authentication of admin.
  */
 function validateadminlogin($ausername,$apassword) {
    global $conn;
    // Build an SQL statment that will return a record with a matching username
    $sql = "select * from admin where username='$ausername';";
 	//echo $sql;
-   $loginresult = mysqli_query($conn, $sql);
-   $admindetails = mysqli_fetch_assoc($loginresult);
+   $aloginresult = mysqli_query($conn, $sql);
+   $admindetails = mysqli_fetch_assoc($aloginresult);
 	//print_r($admindetails);
 
 	// use PHP's verify_password function to check whether the stored
 	// hash matches the given password
-	if (password_verify($password, $admindetails['password'])) {
+	if (password_verify($apassword, $admindetails['password'])) {
 		$_SESSION['id'] = $ausername;
 		return true;
 	}
@@ -48,7 +48,7 @@ function validateuserlogin($uusername,$upassword) {
 
 	// use PHP's verify_password function to check whether the stored
 	// hash matches the given password
-	if (password_verify($password, $userdetails['password'])) {
+	if (password_verify($upassword, $userdetails['password'])) {
 		$_SESSION['id'] = $uusername;
 		return true;
 	}
