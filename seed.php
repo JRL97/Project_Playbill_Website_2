@@ -40,7 +40,7 @@
      $result = mysqli_query($conn, $sql);
 
      
-    require_once 'vendor/autoload.php';
+     require_once 'vendor/autoload.php';
 
     $faker = Faker\Factory::create();
 
