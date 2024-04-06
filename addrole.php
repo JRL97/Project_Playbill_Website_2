@@ -109,9 +109,7 @@ $data['content'] = <<<EOD
 
 
 
-//Add new role and assign a rank with a drop down menu 
 
-//Save to databse button
 
 
 ?>
