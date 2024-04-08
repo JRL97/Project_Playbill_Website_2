@@ -76,7 +76,52 @@ foreach($result as $row) {
 
 if (isset($_POST['submit'])) {
 
-//Unassigned Role Dropdown
+  
+    if(empty($_POST['role_name']) || empty($_POST['actor_name']))
+  
+    
+    {
+        
+       // echo "echo" . $id . $performanceid .  ($_POST['role_id']) . ($_POST['actor_id']);
+        //Print out error message if any of the fields are empty and return to the addstudent page button
+        $data['content'] = "<p>Please Fill In All Required Fields</p><br>";    
+        $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addcast.php\"'>";
+    } 
+
+    else
+    {
+
+    $actorid =  mysqli_real_escape_string($conn, $_POST['actor_name']);
+    $roleid =  mysqli_real_escape_string($conn, $_POST['role_name']);
+   
+ 
+
+    $sql = "INSERT INTO perfrole (performance_id, actor_id, role_id) 
+    VALUES ('$performanceid', '$actorid', '$roleid')";
+    $result = mysqli_query($conn,$sql);
+
+
+$data['content']= "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
+$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addcast.php\"'>";
+               }
+
+            }      
+else {
+  
+   
+?>
+
+
+ <div class="container mt-3">
+   <div class="card">
+   <div class="card-header">
+   <h2>Add Cast</h2>
+   </div>
+   <div class="card-body">
+   <form name="frmdetails" action="" method="POST" enctype="multipart/form-data">
+
+
+<?php
 $sql = "SELECT role_id, role_name FROM role
 WHERE show_id = $id
 AND NOT role_id in 
@@ -90,21 +135,28 @@ $result = mysqli_query($conn,$sql);
 
 echo "<select id='role_id' name='role_name'>"; 
 
+
+
 while ($row = mysqli_fetch_array($result)) {
     unset($roleid, $rolename);
     $roleid = $row['role_id'];
     $rolename = $row['role_name'];
     echo '<option value="'.$roleid.'">'. $rolename.'</option>';
+
 }
+
 echo "</select>";
 
-//Actor drop down
+
 $sql = "SELECT actor_id, actor_name FROM actor ORDER BY actor_name";
 $result = mysqli_query($conn,$sql);
 
 
+echo "<select id='actor_id' name='actor_name'>"; 
 
-echo "<select id='actore_id' name='actor_name'>"; 
+
+//Actor drop down
+
 
 while ($row = mysqli_fetch_array($result)) {
     unset($actorid, $actorname);
@@ -112,37 +164,22 @@ while ($row = mysqli_fetch_array($result)) {
     $actorname = $row['actor_name'];
     echo '<option value="'.$actorid.'">'. $actorname.'</option>';
 }
-echo "</select>";
 
-$data['content'] = "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
-$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addcast.php\"'>";
-               }
-
-
-else {
-
-
-echo '<div class="container mt-3">
-   <div class="card">
-   <div class="card-header">
-   <h2>Add Cast</h2>
-   </div>
-   <div class="card-body">
-   <form name="frmdetails" action="" method="post" enctype="multipart/form-data">
-
-   
+echo "</select>"
+?>
    </div>
   <div class="card-footer">
   <input type="submit" value="Save" name="submit"/>
   </div>
   </form>
   </div>
-  </div>';
+  </div>
 
 
+
+<?php
 }
-
 // render the template
 echo template("templates/default.php", $data);
 
-?>
+?> 
