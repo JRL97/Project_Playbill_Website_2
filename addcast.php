@@ -41,6 +41,18 @@ while ($row = mysqli_fetch_array($result)) {
 }
 echo "</select>";
 
+//Create the table
+
+$data['content'] .= "<table class='table table-bordered border-dark mt-3'>";
+      $data['content'] .= "<tr><th colspan='10' align='center'>Cast List for $name for $performancename</th></tr>";
+      $data['content'] .=  "<tr>
+                                <th>Role</th>
+                                <th>Actor</th>
+                            </tr>";
+
+
+
+
 $sql = "SELECT role.role_name, actor.actor_name
 FROM perfrole 
 INNER JOIN role ON perfrole.role_id = role.role_id
@@ -49,7 +61,11 @@ WHERE perfrole.performance_id = $performanceid AND role.rank= 'main'";
 $result = mysqli_query($conn,$sql);
 
 foreach($result as $row) {
-    echo $row['role_name'] . $row['actor_name'];
+$data['content'] .= "<tr>";
+$data['content'] .= "<td>{$row['role_name']} </td>";
+$data['content'] .= "<td>{$row['actor_name']} </td>";
+$data['content'] .= "<tr>";
+    //echo $row['role_name'] . $row['actor_name'];
 }
 
 $sql = "SELECT role.role_name, actor.actor_name
@@ -60,7 +76,11 @@ WHERE perfrole.performance_id = $performanceid AND role.rank= 'supporting'";
 $result = mysqli_query($conn,$sql);
 
 foreach($result as $row) {
-    echo $row['role_name'] . $row['actor_name'];
+    $data['content'] .= "<tr>";
+$data['content'] .= "<td>{$row['role_name']} </td>";
+$data['content'] .= "<td>{$row['actor_name']} </td>";
+$data['content'] .= "<tr>";
+    //echo $row['role_name'] . $row['actor_name'];
 }
 
 $sql = "SELECT role.role_name, actor.actor_name
@@ -71,8 +91,13 @@ WHERE perfrole.performance_id = $performanceid AND role.rank= 'ensemble'";
 $result = mysqli_query($conn,$sql);
 
 foreach($result as $row) {
-    echo $row['role_name'] . $row['actor_name'];
+    $data['content'] .= "<tr>";
+$data['content'] .= "<td>{$row['role_name']} </td>";
+$data['content'] .= "<td>{$row['actor_name']} </td>";
+$data['content'] .= "<tr>";
+    //echo $row['role_name'] . $row['actor_name'];
 }
+
 
 if (isset($_POST['submit'])) {
 
@@ -179,6 +204,8 @@ echo "</select>"
 
 <?php
 }
+
+echo "Current Selected Show: " . $name . "<br>" . "Current Selected Performance: " . $performancename;
 // render the template
 echo template("templates/default.php", $data);
 
