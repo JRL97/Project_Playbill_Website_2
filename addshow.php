@@ -46,7 +46,7 @@ $data['content'] = "";
            // $result = mysqli_query($conn,$sql2);
         
               $data['content'] = "<div class='alert alert-success mt-3' role='alert'>Show Record Added</div>";
-            
+              $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addshow.php\"'>";
                }
    }
             else {

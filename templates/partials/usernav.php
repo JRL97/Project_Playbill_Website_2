@@ -18,11 +18,12 @@
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="adminlogin.php">Login</a>
-        <a class="nav-link" href="addshow.php">Add Show</a>
-        <a class="nav-link" href="addperformance.php">Add Performance</a>
-        <a class="nav-link" href="addrole.php">Add Roles</a>
-        <a class="nav-link" href="addcast.php">Add Cast</a>
+        <a class="nav-link" href="index.php">Home</a>
+        <a class="nav-link" href="modules.php">My Modules</a>
+        <a class="nav-link" href="assignmodule.php">Assign Module</a>
+        <a class="nav-link" href="details.php">My Details</a>
+        <a class="nav-link" href="students.php">Student Table</a>
+        <a class="nav-link" href="addstudent.php">Add Student</a>
         <a class="nav-link" href="logout.php">Logout</a>
       </div>
     </div>

@@ -25,12 +25,15 @@ while ($row = mysqli_fetch_array($result)) {
 }
 echo "</select>";
 
+//$name =  mysqli_real_escape_string($conn, $_POST['title']);
+
 if (isset($_POST['submit'])) {
 
     if(empty($_POST['performance_date']) || empty($_POST['mat_eve']))
   
     
     {
+        
         //Print out error message if any of the fields are empty and return to the addstudent page button
         $data['content'] = "<p>Please Fill In All Required Fields</p><br>";    
         $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addperformance.php\"'>";
@@ -39,15 +42,18 @@ if (isset($_POST['submit'])) {
     else
     {
 
+        
 //$performance_date =  $_POST['performance_date'];
 $mat_eve =  mysqli_real_escape_string($conn, $_POST['mat_eve']);
+
 
 $sql = "INSERT INTO performance (show_id, performance_date, mat_eve) 
 VALUES ('$id', '{$_POST['performance_date']}', '$mat_eve')";
 $result = mysqli_query($conn,$sql);
 
-$data['content'] = "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
-$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addperformance.php\"'>";
+echo $id . $name;
+//$data['content'] = "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
+//$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addperformance.php\"'>";
                }
 
 }
