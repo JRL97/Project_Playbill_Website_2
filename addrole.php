@@ -5,25 +5,26 @@ include("_includes/dbconnect.inc");
 include("_includes/functions.inc");
 
 $data['content'] = "";
-
+$id = $_POST['stitle'];
+echo $id;
 echo template("templates/partials/header.php");
 echo template("templates/partials/nav.php");
 
 //select all shows and order by title
-$sql = "SELECT show_id, title FROM theatreshow ORDER BY title";
-$result = mysqli_query($conn,$sql);
+//$sql = "SELECT show_id, title FROM theatreshow ORDER BY title";
+//$result = mysqli_query($conn,$sql);
 
 
 // Drop down menu for all shows
-echo "<select id='show_id' name='title'>"; 
+//echo "<select id='show_id' name='title'>"; 
 
-while ($row = mysqli_fetch_array($result)) {
-    unset($id, $name);
-    $id = $row['show_id'];
-    $name = $row['title'];
-    echo '<option value="'.$id.'">'. $name.'</option>';
-}
-echo "</select>";
+//while ($row = mysqli_fetch_array($result)) {
+  //  unset($id, $name);
+    //$id = $row['show_id'];
+    //$name = $row['title'];
+    //echo '<option value="'.$id.'">'. $name.'</option>';
+//}
+//echo "</select>";
 
 $sql = "SELECT role_name FROM role WHERE show_id = $id AND rank= 'main'";
 $result = mysqli_query($conn,$sql);
@@ -60,6 +61,7 @@ if (isset($_POST['submit'])) {
     else
     {
 
+        echo $id . $name;
 $role_name =  mysqli_real_escape_string($conn, $_POST['role_name']);
 $rank =  mysqli_real_escape_string($conn, $_POST['rank']);
 
