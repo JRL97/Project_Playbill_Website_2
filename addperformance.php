@@ -5,7 +5,7 @@ include("_includes/dbconnect.inc");
 include("_includes/functions.inc");
 
 $data['content'] = "";
-
+//$_POST['title'] = 0;
 echo template("templates/partials/header.php");
 echo template("templates/partials/nav.php");
 
@@ -22,10 +22,11 @@ while ($row = mysqli_fetch_array($result)) {
     $id = $row['show_id'];
     $name = $row['title'];
     echo '<option value="'.$id.'">'. $name.'</option>';
+    //$name = $_POST['title'];
 }
 echo "</select>";
 
-//$name =  mysqli_real_escape_string($conn, $_POST['title']);
+//$name = $_POST['title'];
 
 if (isset($_POST['submit'])) {
 
@@ -51,9 +52,9 @@ $sql = "INSERT INTO performance (show_id, performance_date, mat_eve)
 VALUES ('$id', '{$_POST['performance_date']}', '$mat_eve')";
 $result = mysqli_query($conn,$sql);
 
-echo $id . $name;
-//$data['content'] = "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
-//$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addperformance.php\"'>";
+//echo $id . $name;
+$data['content'] = "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
+$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addperformance.php\"'>";
                }
 
 }
