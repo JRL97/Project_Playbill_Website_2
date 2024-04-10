@@ -7,7 +7,7 @@ include("_includes/functions.inc");
 $data['content'] = "";
 //$id = mysqli_real_escape_string($conn, $_POST['stitle']);
 $id = $_POST['stitle'];
-echo $id;
+//echo $id;
 echo template("templates/partials/header.php");
 echo template("templates/partials/nav.php");
 
@@ -27,26 +27,58 @@ echo template("templates/partials/nav.php");
 //}
 //echo "</select>";
 
+
+//Create the table for the already added roles
+
+//sql to get the name of the show that is currently being displayed. 
+
+$sql = "SELECT title FROM theatreshow WHERE show_id = $id";
+$result = mysqli_query($conn,$sql);
+while ($row = mysqli_fetch_array($result)) {
+    //unset($id, $name);
+    $currenttitle = $row['title'];
+}
+//$currenttitle = mysqli_fetch_array($result);
+//$currenttitle =  mysqli_real_escape_string($_POST['title']);
+
+
+$data['content'] .= "<table class='table table-bordered border-dark mt-3'>";
+      $data['content'] .= "<tr><th colspan='10' align='center'>Current Role List for $currenttitle </th></tr>";
+      $data['content'] .=  "<tr>
+                                <th>Role</th>
+                            </tr>";
+
+
 $sql = "SELECT role_name FROM role WHERE show_id = $id AND rank= 'main'";
 $result = mysqli_query($conn,$sql);
 
 foreach($result as $row) {
-    echo $row['role_name'];
+    $data['content'] .= "<tr>";
+    $data['content'] .= "<td>{$row['role_name']} </td>";
+    $data['content'] .= "<tr>";
 }
 
 $sql = "SELECT role_name FROM role WHERE show_id = $id AND rank= 'supporting'";
 $result = mysqli_query($conn,$sql);
 
 foreach($result as $row) {
-    echo $row['role_name'];
+    $data['content'] .= "<tr>";
+    $data['content'] .= "<td>{$row['role_name']}</td>";
+    $data['content'] .= "<tr>";
 }
 
 $sql = "SELECT role_name FROM role WHERE show_id = $id AND rank= 'ensemble'";
 $result = mysqli_query($conn,$sql);
 
 foreach($result as $row) {
-    echo $row['role_name'];
+    $data['content'] .= "<tr>";
+    $data['content'] .= "<td>{$row['role_name']}</td>";
+    $data['content'] .= "<tr>";
 }
+
+
+
+
 
 if (isset($_POST['submit1'])) {
 
