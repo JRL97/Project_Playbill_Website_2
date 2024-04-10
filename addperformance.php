@@ -10,21 +10,21 @@ echo template("templates/partials/header.php");
 echo template("templates/partials/nav.php");
 
 //select all shows and order by title
-$sql = "SELECT show_id, title FROM theatreshow ORDER BY title";
-$result = mysqli_query($conn,$sql);
+//$sql = "SELECT show_id, title FROM theatreshow ORDER BY title";
+//$result = mysqli_query($conn,$sql);
 
 
 // Drop down menu for all shows
-echo "<select id='show_id' name='title'>"; 
+//echo "<select id='show_id' name='title'>"; 
 
-while ($row = mysqli_fetch_array($result)) {
-    unset($id, $name);
-    $id = $row['show_id'];
-    $name = $row['title'];
-    echo '<option value="'.$id.'">'. $name.'</option>';
+//while ($row = mysqli_fetch_array($result)) {
+   // unset($id, $name);
+    //$id = $row['show_id'];
+   // $name = $row['title'];
+   // echo '<option value="'.$id.'">'. $name.'</option>';
     //$name = $_POST['title'];
-}
-echo "</select>";
+//}
+//echo "</select>";
 
 //$name = $_POST['title'];
 
@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
     else
     {
 
-        
+$id = $_POST['stitle'];
 //$performance_date =  $_POST['performance_date'];
 $mat_eve =  mysqli_real_escape_string($conn, $_POST['mat_eve']);
 
@@ -60,17 +60,35 @@ $data['content'] .= "<input type='button' value='Return' onclick='window.locatio
 }
 else {
 
+    //select all shows and order by title
+$sql = "SELECT show_id, title FROM theatreshow ORDER BY title";
+$result = mysqli_query($conn,$sql);
 
-$data['content'] = <<<EOD
+?>
+
 <div class="container mt-3">
    <div class="card">
    <div class="card-header">
-   <h2>Add New Student</h2>
+   <h2>Add Performance</h2>
    </div>
    <div class="card-body">
    <form name="frmdetails" action="" method="post" enctype="multipart/form-data">
+   Select Show: 
 
-   Date of Performance: 
+   
+ <select name="stitle"> 
+
+<?php while ($row = mysqli_fetch_array($result)) {
+   unset($id, $name);
+    $id = $row['show_id'];
+    $name = $row['title'];
+    echo '<option value="'.$id.'">'. $name.'</option>';
+}
+?>
+
+</select>
+<br></br>
+Date of Performance: 
    <input class="form-control mt-2 mb-2" name="performance_date" type="date" value="" />
    Matinee or Evening Show:
    <select name="mat_eve">
@@ -85,7 +103,7 @@ $data['content'] = <<<EOD
   </form>
   </div>
   </div>
-EOD;
+<?php
 }
 
 // render the template

@@ -21,7 +21,7 @@
         <a class="nav-link" href="adminlogin.php">Login</a>
         <a class="nav-link" href="addshow.php">Add Show</a>
         <a class="nav-link" href="addperformance.php">Add Performance</a>
-        <a class="nav-link" href="addrole.php">Add Roles</a>
+        <a class="nav-link" href="roleselect.php">Add Roles</a>
         <a class="nav-link" href="addcast.php">Add Cast</a>
         <a class="nav-link" href="logout.php">Logout</a>
       </div>

@@ -23,7 +23,7 @@ $result = mysqli_query($conn,$sql);
 <div class="container mt-3">
    <div class="card">
    <div class="card-header">
-   <h2>Select Show</h2>
+   <h2>Select Show To Add Roles To</h2>
    </div>
    <div class="card-body">
    <form name="frmdetails" action="addrole.php" method="POST" enctype="multipart/form-data">
@@ -51,7 +51,7 @@ $result = mysqli_query($conn,$sql);
 
 </div>
   <div class="card-footer">
-  <input type="submit" value="Save" name="submit"/>
+  <input type="submit" value="Go To Add Roles" name="submit"/>
   </div>
   </form>
   </div>
