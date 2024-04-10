@@ -5,6 +5,7 @@ include("_includes/dbconnect.inc");
 include("_includes/functions.inc");
 
 $data['content'] = "";
+//$id = mysqli_real_escape_string($conn, $_POST['stitle']);
 $id = $_POST['stitle'];
 echo $id;
 echo template("templates/partials/header.php");
@@ -47,7 +48,7 @@ foreach($result as $row) {
     echo $row['role_name'];
 }
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit1'])) {
 
     if(empty($_POST['role_name']) || empty($_POST['rank']))
   
@@ -61,7 +62,8 @@ if (isset($_POST['submit'])) {
     else
     {
 
-        echo $id . $name;
+        
+        $id = mysqli_real_escape_string($conn, $_POST['stitle']);
 $role_name =  mysqli_real_escape_string($conn, $_POST['role_name']);
 $rank =  mysqli_real_escape_string($conn, $_POST['rank']);
 
@@ -69,16 +71,21 @@ $sql = "INSERT INTO role (show_id, role_name, rank)
 VALUES ('$id', '$role_name', '$rank')";
 $result = mysqli_query($conn,$sql);
 
+
+
 $data['content'] = "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
-$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addrole.php\"'>";
+?> <form action="" method="post"><input type="hidden" name="stitle" value="<?php echo $id; ?>"> 
+<input type="submit" value="Return" name="submit"/> </form> <?php 
+
                }
 
 }
 else {
 
 
-$data['content'] = <<<EOD
+//$data['content'] = <<<EOD
 
+?>
                <div class="container mt-3">
                <div class="card">
                <div class="card-header">
@@ -86,7 +93,8 @@ $data['content'] = <<<EOD
                </div>
                <div class="card-body">
                <form name="frmdetails" action="" method="post" enctype="multipart/form-data">
-            
+               
+               <input type="hidden" name="stitle" value="<?php echo $id; ?>">
                Role Name: 
                <input class="form-control mt-2 mb-2" name="role_name" type="text" value=""  />
                 Rank:
@@ -98,14 +106,16 @@ $data['content'] = <<<EOD
 
                </div>
                <div class="card-footer">
-               <input type="submit" value="Save" name="submit"/>
+               <input type="submit" value="Save" name="submit1"/>
                </div>
                </form>
                </div>
                </div>
-            EOD;
-}
+            
 
+
+<?php
+}
              // render the template
    echo template("templates/default.php", $data);
 
