@@ -5,46 +5,27 @@ include("_includes/dbconnect.inc");
 include("_includes/functions.inc");
 
 $data['content'] = "";
+$performanceid = $_POST['ptitle'];
+$showing = $_POST['showing']; 
+$id = $_POST['stitle'];
 
 echo template("templates/partials/header.php");
 echo template("templates/partials/nav.php");
 
-//select all shows and order by title
-$sql = "SELECT show_id, title FROM theatreshow ORDER BY title";
-$result = mysqli_query($conn,$sql);
 
-
-// Drop down menu for all shows
-echo "<select id='show_id' name='title'>"; 
-
-while ($row = mysqli_fetch_array($result)) {
-    unset($id, $name);
-    $id = $row['show_id'];
-    $name = $row['title'];
-    echo '<option value="'.$id.'">'. $name.'</option>';
-}
-echo "</select>";
-
-//select a performance from the show
-
-$sql= "SELECT performance_id, performance_date FROM performance WHERE show_id = $id";
-$result = mysqli_query($conn,$sql);
-
-// Drop down menu for performances
-echo "<select id='performance_id' name='performance_date'>"; 
-
-while ($row = mysqli_fetch_array($result)) {
-    unset($performanceid, $performancename);
-    $performanceid = $row['performance_id'];
-    $performancename = $row['performance_date'];
-    echo '<option value="'.$performanceid.'">'. $performancename.'</option>';
-}
-echo "</select>";
 
 //Create the table
 
+$sql = "SELECT title FROM theatreshow WHERE show_id = $id";
+$result = mysqli_query($conn,$sql);
+while ($row = mysqli_fetch_array($result)) {
+    //unset($id, $name);
+    $currenttitle = $row['title'];
+}
+
+
 $data['content'] .= "<table class='table table-bordered border-dark mt-3'>";
-      $data['content'] .= "<tr><th colspan='10' align='center'>Cast List for $name for $performancename</th></tr>";
+      $data['content'] .= "<tr><th colspan='10' align='center'>Cast List for $currenttitle for $showing</th></tr>";
       $data['content'] .=  "<tr>
                                 <th>Role</th>
                                 <th>Actor</th>
@@ -99,7 +80,7 @@ $data['content'] .= "<tr>";
 }
 
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit1'])) {
 
   
     if(empty($_POST['role_name']) || empty($_POST['actor_name']))
@@ -125,9 +106,14 @@ if (isset($_POST['submit'])) {
     VALUES ('$performanceid', '$actorid', '$roleid')";
     $result = mysqli_query($conn,$sql);
 
+    $data['content'] = "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
+    ?> <form action="" method="post"><input type="hidden" name="stitle" value="<?php echo $id; ?>"> 
+    <form action="" method="post"><input type="hidden" name="ptitle" value="<?php echo $performanceid; ?>">
+    <form action="" method="post"><input type="hidden" name="showing" value="<?php echo $showing; ?>">
+    <input type="submit" value="Return" name="submit"/> </form> <?php 
 
-$data['content']= "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
-$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addcast.php\"'>";
+//$data['content']= "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
+//$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addcast.php\"'>";
                }
 
             }      
@@ -194,7 +180,10 @@ echo "</select>"
 ?>
    </div>
   <div class="card-footer">
-  <input type="submit" value="Save" name="submit"/>
+  <input type="hidden" name="showing" value="<?php echo $showing; ?>">
+  <input type="hidden" name="stitle" value="<?php echo $id; ?>">
+  <input type="hidden" name="ptitle" value="<?php echo $performanceid; ?>">
+  <input type="submit" value="Save" name="submit1"/>
   </div>
   </form>
   </div>
@@ -205,7 +194,7 @@ echo "</select>"
 <?php
 }
 
-echo "Current Selected Show: " . $name . "<br>" . "Current Selected Performance: " . $performancename;
+//echo "Current Selected Show: " . $name . "<br>" . "Current Selected Performance: " . $performancename;
 // render the template
 echo template("templates/default.php", $data);
 
