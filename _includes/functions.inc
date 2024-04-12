@@ -40,7 +40,7 @@ function validateadminlogin($ausername,$apassword) {
 function validateuserlogin($uusername,$upassword) {
    global $conn;
    // Build an SQL statment that will return a record with a matching id
-   $sql = "select * from users where username='$uusername';";
+   $sql = "select * from user where username='$uusername';";
 	//echo $sql;
    $loginresult = mysqli_query($conn, $sql);
    $userdetails = mysqli_fetch_assoc($loginresult);
