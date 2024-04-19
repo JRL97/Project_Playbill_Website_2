@@ -184,6 +184,7 @@ $string = "";
 foreach($result as $row) {
 if($count == 0){
     $string = $row['actor_name'];
+    $count++;
 }
 elseif($count == 3){
     $string = $string . " , " . $row['actor_name'];
@@ -195,12 +196,13 @@ elseif($count == 3){
 }
 else{
     $string = $string . " , " . $row['actor_name'];
+    $count++;
 }
    
-$count++;
+
 }
 
-if($count != 3){
+if($count != 0){
     $data['content'] .= "<tr>";
     $data['content'] .= "<td width= 20% align='center'> <b>$string</b> </td>";
     $data['content'] .= "</tr>";
