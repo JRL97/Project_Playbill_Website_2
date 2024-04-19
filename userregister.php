@@ -11,7 +11,7 @@
    //that the username and email is not already in use. 
 ?>
    <div class="bg-image"
-     style="background-image: url('images/BucksLogo.jpg'); background-repeat:no-repeat; height: 100vh;">
+     style="background-image: url('images/TheatreShowInfoLogo.jpg'); background-repeat:no-repeat; height: 100vh;">
 
      <input type="button" value="Back to User Login?" onclick="location='index.php'" />
      
@@ -38,7 +38,6 @@ if($row["num_rows"] > 0){
     {
 
     $hashed_password = password_hash($_POST['txtpwd'], PASSWORD_DEFAULT);
-    //$password =  mysqli_real_escape_string($conn, $_POST['txtpwd']);
     $firstname =  mysqli_real_escape_string($conn, $_POST['txtfn']);
     $lastname =  mysqli_real_escape_string($conn, $_POST['txtln']);
     $email =  mysqli_real_escape_string($conn, $_POST['txtem']);

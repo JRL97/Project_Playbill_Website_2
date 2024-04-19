@@ -18,7 +18,7 @@ $data['content'] = "";
     if(empty($_POST['actor_name'])) 
         
         {
-            //Print out error message if any of the fields are empty and return to the addstudent page button
+            //Print out error message if any of the fields are empty and return to the addactor page button
             $data['content'] = "<p>Please Fill In All Required Fields</p><br>";    
             $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addactor.php\"'>";
         } 
@@ -41,7 +41,7 @@ $data['content'] = "";
                }
    }
             else {
-
+               //Create the form
                $data['content'] = <<<EOD
 
                <div class="container mt-3">

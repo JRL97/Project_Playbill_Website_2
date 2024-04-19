@@ -23,9 +23,6 @@ while ($row = mysqli_fetch_array($result)) {
     
  }
 
-//$sql = ""
-
-//create tables of info for the user programmes. 
 ?>
 
 <html>

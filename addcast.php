@@ -23,7 +23,7 @@ while ($row = mysqli_fetch_array($result)) {
     $currenttitle = $row['title'];
 }
 
-
+//Table structure
 $data['content'] .= "<table class='table table-bordered border-dark mt-3'>";
       $data['content'] .= "<tr><th colspan='10' align='center'>Cast List for $currenttitle for $showing</th></tr>";
       $data['content'] .=  "<tr>
@@ -33,7 +33,7 @@ $data['content'] .= "<table class='table table-bordered border-dark mt-3'>";
 
 
 
-
+//Print out actors and roles with main rank
 $sql = "SELECT role.role_name, actor.actor_name
 FROM perfrole 
 INNER JOIN role ON perfrole.role_id = role.role_id
@@ -49,6 +49,8 @@ $data['content'] .= "<tr>";
     //echo $row['role_name'] . $row['actor_name'];
 }
 
+
+//Print out actors and roles with supporting rank
 $sql = "SELECT role.role_name, actor.actor_name
 FROM perfrole 
 INNER JOIN role ON perfrole.role_id = role.role_id
@@ -61,9 +63,10 @@ foreach($result as $row) {
 $data['content'] .= "<td>{$row['role_name']} </td>";
 $data['content'] .= "<td>{$row['actor_name']} </td>";
 $data['content'] .= "<tr>";
-    //echo $row['role_name'] . $row['actor_name'];
+   
 }
 
+//print out all actors and roles with rank ensemble
 $sql = "SELECT role.role_name, actor.actor_name
 FROM perfrole 
 INNER JOIN role ON perfrole.role_id = role.role_id
@@ -88,7 +91,6 @@ if (isset($_POST['submit1'])) {
     
     {
         
-       // echo "echo" . $id . $performanceid .  ($_POST['role_id']) . ($_POST['actor_id']);
         //Print out error message if any of the fields are empty and return to the addstudent page button
         $data['content'] = "<p>Please Fill In All Required Fields</p><br>";    
         $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addcast.php\"'>";
@@ -101,7 +103,7 @@ if (isset($_POST['submit1'])) {
     $roleid =  mysqli_real_escape_string($conn, $_POST['role_name']);
    
  
-
+  //insert variables into table
     $sql = "INSERT INTO perfrole (performance_id, actor_id, role_id) 
     VALUES ('$performanceid', '$actorid', '$roleid')";
     $result = mysqli_query($conn,$sql);
@@ -112,8 +114,7 @@ if (isset($_POST['submit1'])) {
     <form action="" method="post"><input type="hidden" name="showing" value="<?php echo $showing; ?>">
     <input type="submit" value="Return" name="submit"/> </form> <?php 
 
-//$data['content']= "<div class='alert alert-success mt-3' role='alert'>Role Record Added</div>";
-//$data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addcast.php\"'>";
+
                }
 
             }      
@@ -194,7 +195,7 @@ echo "</select>"
 <?php
 }
 
-//echo "Current Selected Show: " . $name . "<br>" . "Current Selected Performance: " . $performancename;
+
 // render the template
 echo template("templates/default.php", $data);
 

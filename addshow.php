@@ -17,7 +17,7 @@ $data['content'] = "";
     //Check if any of the fields are empty
     if(empty($_POST['title']) || empty($_POST['synopsis']) 
         || empty($_POST['theatre']) || empty($_POST['run_time']) )
-        //|| empty($_POST['role_name']) || empty($_POST['rank']))
+        
         
         {
             //Print out error message if any of the fields are empty and return to the addstudent page button
@@ -32,18 +32,14 @@ $data['content'] = "";
             $synopsis =  mysqli_real_escape_string($conn, $_POST['synopsis']);
             $theatre = mysqli_real_escape_string($conn, $_POST['theatre']);
             $run_time = mysqli_real_escape_string($conn, $_POST['run_time']);
-           // $role_name = mysqli_real_escape_string($conn, $_POST['role_name']);
-           // $rank = mysqli_real_escape_string($conn, $_POST['rank']); 
+          
 
             $sql = "INSERT INTO theatreshow (title, synopsis, theatre, run_time) 
             VALUES ( '$title', '$synopsis', '$theatre', '$run_time')"; 
         
-          // $sql2 = "INSERT INTO role (role_name, rank) 
-           //VALUES ( '$role_name', '$rank')";
-
              //run the query
             $result = mysqli_query($conn,$sql);
-           // $result = mysqli_query($conn,$sql2);
+          
         
               $data['content'] = "<div class='alert alert-success mt-3' role='alert'>Show Record Added</div>";
               $data['content'] .= "<input type='button' value='Return' onclick='window.location.href=\"addshow.php\"'>";
@@ -82,14 +78,6 @@ $data['content'] = "";
                // render the template
    echo template("templates/default.php", $data);
 
-// } else {
-  // header("Location: index.php");
-//}
-
-//Role Name :
-//<input class="form-control mt-2 mb-2" name="role_name" type="text"  value="" />
-//Role Rank:
-//<input class="form-control mt-2 mb-2" name="rank" type="enum"  value="" />
 
 echo template("templates/partials/footer.php");
 

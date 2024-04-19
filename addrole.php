@@ -5,30 +5,11 @@ include("_includes/dbconnect.inc");
 include("_includes/functions.inc");
 
 $data['content'] = "";
-//$id = mysqli_real_escape_string($conn, $_POST['stitle']);
+
 $id = $_POST['stitle'];
-//echo $id;
+
 echo template("templates/partials/header.php");
 echo template("templates/partials/nav.php");
-
-//select all shows and order by title
-//$sql = "SELECT show_id, title FROM theatreshow ORDER BY title";
-//$result = mysqli_query($conn,$sql);
-
-
-// Drop down menu for all shows
-//echo "<select id='show_id' name='title'>"; 
-
-//while ($row = mysqli_fetch_array($result)) {
-  //  unset($id, $name);
-    //$id = $row['show_id'];
-    //$name = $row['title'];
-    //echo '<option value="'.$id.'">'. $name.'</option>';
-//}
-//echo "</select>";
-
-
-//Create the table for the already added roles
 
 //sql to get the name of the show that is currently being displayed. 
 
@@ -38,8 +19,7 @@ while ($row = mysqli_fetch_array($result)) {
     //unset($id, $name);
     $currenttitle = $row['title'];
 }
-//$currenttitle = mysqli_fetch_array($result);
-//$currenttitle =  mysqli_real_escape_string($_POST['title']);
+
 
 
 $data['content'] .= "<table class='table table-bordered border-dark mt-3'>";
@@ -114,8 +94,6 @@ $data['content'] = "<div class='alert alert-success mt-3' role='alert'>Role Reco
 }
 else {
 
-
-//$data['content'] = <<<EOD
 
 ?>
                <div class="container mt-3">

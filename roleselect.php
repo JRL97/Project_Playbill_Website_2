@@ -41,13 +41,7 @@ $result = mysqli_query($conn,$sql);
 }
 ?>
 
-
 </select>
-
-<?php
-//echo $id. $name; 
-//$option = $_POST['stitle'];
-?>
 
 </div>
   <div class="card-footer">
