@@ -13,7 +13,7 @@
    }
 
    if (isset($_SESSION['id'])) {
-      $data['content'] .= "<img src='images/TheatreShowInfoLogo.jpg' class='position-absolute top-50 start-50 translate-middle opacity-25' >";
+      //$data['content'] .= "<img src='images/TheatreShowInfoLogo.jpg' class='position-absolute top-50 start-50 translate-middle opacity-25' >";
       $data['content'] .= "<h1 class='text-center mt-5'>Please Select a Show<br>";
       
       echo template("templates/partials/usernav.php");

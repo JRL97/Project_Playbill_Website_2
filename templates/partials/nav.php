@@ -12,6 +12,7 @@
         <a class="nav-link" href="addshow.php">Add Show</a>
         <a class="nav-link" href="addperformance.php">Add Performance</a>
         <a class="nav-link" href="roleselect.php">Add Roles</a>
+        <a class="nav-link" href="addactor.php">Add Actor</a>
         <a class="nav-link" href="castshowselect.php">Add Cast</a>
         <a class="nav-link" href="logout.php">Logout</a>
       </div>

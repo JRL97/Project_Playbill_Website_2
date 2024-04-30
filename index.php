@@ -4,7 +4,8 @@
    include("_includes/dbconnect.inc");
    include("_includes/functions.inc");
 
-   echo template("templates/partials/header.php");
+   $data['content'] = "";
+   echo template("templates/partials/header.php");    
 
    if (isset($_GET['return'])) {
       $msg = "";
@@ -13,7 +14,9 @@
    }
 
    if (isset($_SESSION['id'])) {
-      $data['content'] .= "<img src='images/Buckslogo.jpg' class='position-absolute top-50 start-50 translate-middle opacity-25' >";
+      
+      
+     // $data['content'] .= "<img src='images/TheatreShowInfoLogo.jpg' class='position-absolute top-50 start-50 translate-middle opacity-25' >";
       $data['content'] .= "<h1 class='text-center mt-5'>Welcome to your dashboard.<br>";
       
       echo template("templates/partials/nav.php");

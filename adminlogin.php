@@ -1,5 +1,5 @@
 <div class="bg-image"
-     style="background-image: url('images/BucksLogo.jpg'); background-repeat:no-repeat; height: 100vh;">
+     style="background-image: url('images/TheatreShowInfoLogo.jpg'); background-repeat:no-repeat; height: 500px 300px;">
      
 <h1 class="mt-4">Login </h1>
 

@@ -4,10 +4,10 @@
    include("_includes/dbconnect.inc");
    include("_includes/functions.inc");
 
-
-    Password hasing: 
-     $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    */
+  
+    //Password hasing: 
+     //$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    
    
     $sql = "CREATE TABLE user (user_id INT(25) AUTO_INCREMENT PRIMARY KEY, username VARCHAR(25) NOT NULL, 
     password VARCHAR(100) NOT NULL, firstname VARCHAR(25) NOT NULL, lastname VARCHAR(25) NOT NULL,

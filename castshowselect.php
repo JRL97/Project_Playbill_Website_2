@@ -47,7 +47,7 @@ $result = mysqli_query($conn,$sql);
 
 </div>
   <div class="card-footer">
-  <input type="submit" value="Go To Add Roles" name="submit"/>
+  <input type="submit" value="Go To Performances" name="submit"/>
   </div>
   </form>
   </div>

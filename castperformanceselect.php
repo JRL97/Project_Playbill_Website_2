@@ -50,7 +50,7 @@ $result = mysqli_query($conn,$sql);
   <div class="card-footer">
   <input type="hidden" name="stitle" value="<?php echo $id; ?>">
   <input type="hidden" name="showing" value="<?php echo $showing; ?>">
-  <input type="submit" value="Go To Add Roles" name="submit"/>
+  <input type="submit" value="Add Cast" name="submit"/>
   </div>
   </form>
   </div>

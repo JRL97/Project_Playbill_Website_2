@@ -1,5 +1,5 @@
 <div class="bg-image"
-     style="background-image: url('images/BucksLogo.jpg'); background-repeat:no-repeat; height: 100vh;">
+     style="background-image: url('images/TheatreShowInfoLogo.jpg'); background-repeat:no-repeat; background-size: 200px 100px;">
 
      <input type="button" value="Admin?" onclick="location='adminlogin.php'" />
      <input type="button" value="Register as User" onclick="location='userregister.php'" />
